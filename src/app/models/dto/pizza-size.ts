@@ -1,4 +1,4 @@
-export interface Topping {
+export interface PizzaSize {
     id: number;
     code: string;
     description: string;
