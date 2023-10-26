@@ -6,3 +6,6 @@ export { OrderStatus } from './order-status';
 export { User } from './user';
 export { UserType } from './user-type';
 export { CouponAction } from './coupon-action';
+export { Coupon } from './coupon';
+export { Order } from './order';
+export { OrderDetail } from './order-detail';
