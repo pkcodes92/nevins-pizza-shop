@@ -24,7 +24,7 @@
         "activityBarBadge.background": "#125740",
         "activityBarBadge.foreground": "#ffffff",
         "sideBarSectionHeader.background": "#125740",
-        "sideBar.foreground": "#fff",
+        "sideBar.foreground": "#fff"
     },
     "peacock.color": "#125740",
     "editor.fontFamily": "Hack",
