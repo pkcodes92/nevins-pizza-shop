@@ -1,4 +1,3 @@
-export { AddToppingRequest } from './add-topping-request';
 export { AddCrustRequest } from './add-crust-request';
 export { AddCouponActionRequest } from './add-coupon-action-request';
 export { AddPizzaSizeRequest } from './add-pizza-size-request';
