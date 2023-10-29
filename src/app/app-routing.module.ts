@@ -6,6 +6,7 @@ import { OrderComponent } from './order/order.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
+    { path: 'home', component: HomeComponent},
     { path: 'config', component: ConfigComponent },
     { path: 'order', component: OrderComponent}
 ];
