@@ -20,11 +20,10 @@
         "activityBar.activeFocusBorder": "#125740",
         "activityBar.activeBorder": "#125740",
         "activityBar.dropBorder": "#125740",
-        "activityBar.activeBackground": "#125740",
-        "activityBarBadge.background": "#125740",
-        "activityBarBadge.foreground": "#ffffff",
         "sideBarSectionHeader.background": "#125740",
-        "sideBar.foreground": "#fff"
+        "sideBar.foreground": "#fff",
+        "activityBarBadge.background": "#125740",
+        "activityBarBadge.foreground": "#ffffff"
     },
     "peacock.color": "#125740",
     "editor.fontFamily": "Hack",
