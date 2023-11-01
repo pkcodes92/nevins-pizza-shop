@@ -10,3 +10,4 @@ export { PizzaSize } from './pizza-size';
 export { User } from './user';
 export { UserType } from './user-type';
 export { ToppingType } from './topping-type';
+export { Topping } from './topping';
