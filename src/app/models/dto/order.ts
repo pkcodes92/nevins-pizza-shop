@@ -1,5 +1,6 @@
 export interface Order {
     id: number;
-    orderDetailId: number;
+    name: string;
     email: string;
+    status: string;
 }
