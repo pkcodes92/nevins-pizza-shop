@@ -73,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "nevins-pizza-shop:build:production"
+              "buildTarget": "nevins-pizza-shop:build:production"
             },
             "development": {
-              "browserTarget": "nevins-pizza-shop:build:development"
+              "buildTarget": "nevins-pizza-shop:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "nevins-pizza-shop:build"
+            "buildTarget": "nevins-pizza-shop:build"
           }
         },
         "test": {
