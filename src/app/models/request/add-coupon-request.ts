@@ -3,4 +3,5 @@ export interface AddCouponRequest {
     description: string;
     typeCode: string;
     actionCode: string;
+    appName: string;
 }

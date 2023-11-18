@@ -4,4 +4,5 @@ export interface AddUserRequest {
     email: string;
     pinCode: string;
     userType: string;
+    appName: string;
 }

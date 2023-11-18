@@ -3,4 +3,5 @@ export interface AddOrderDetailRequest {
     crustCode: string;
     sauceCode: string;
     sizeCode: string;
+    appName: string;
 }
