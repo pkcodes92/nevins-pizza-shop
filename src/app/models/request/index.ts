@@ -11,3 +11,10 @@ export { AddToppingRequest } from './add-topping-request';
 export { AddToppingTypeRequest } from './add-topping-type-request';
 export { AddUserRequest } from './add-user-request';
 export { AddUserTypeRequest } from './add-user-type-request';
+
+export { UpdateCouponActionRequest } from './update-coupon-action-request';
+export { UpdateCouponRequest } from './update-coupon-request';
+export { UpdateCouponTypeRequest } from './update-coupon-type-request';
+export { UpdateCrustRequest } from './update-crust-request';
+export { UpdatePizzaSauceRequest } from './update-pizza-sauce-request';
+export { UpdateOrderStatusRequest } from './update-order-status-request';
