@@ -17,4 +17,5 @@ export { UpdateCouponRequest } from './update-coupon-request';
 export { UpdateCouponTypeRequest } from './update-coupon-type-request';
 export { UpdateCrustRequest } from './update-crust-request';
 export { UpdatePizzaSauceRequest } from './update-pizza-sauce-request';
+export { UpdatePizzaSizeRequest } from './update-pizza-size-request';
 export { UpdateOrderStatusRequest } from './update-order-status-request';
