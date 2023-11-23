@@ -19,3 +19,7 @@ export { UpdateCrustRequest } from './update-crust-request';
 export { UpdatePizzaSauceRequest } from './update-pizza-sauce-request';
 export { UpdatePizzaSizeRequest } from './update-pizza-size-request';
 export { UpdateOrderStatusRequest } from './update-order-status-request';
+export { UpdateOrderDetailRequest } from './update-order-detail-request';
+export { UpdateOrderRequest } from './update-order-request';
+export { UpdateUserRequest } from './update-user-request';
+export { UpdateToppingRequest } from './update-topping-request';
