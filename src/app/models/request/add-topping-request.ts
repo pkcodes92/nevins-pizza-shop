@@ -1,6 +1,6 @@
-export interface Topping {
-    id: number;
+export interface AddToppingRequest {
     name: string;
     description: string;
     type: string;
+    appName: string;
 }

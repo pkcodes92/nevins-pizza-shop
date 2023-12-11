@@ -1,0 +1,22 @@
+.default-header {
+    background-color: #640303;
+    color: white;
+}
+
+.nav-link-bg,
+.nav-link {
+    background-color: #640303;
+    color: #fff;
+}
+
+.nav-link:active,
+a.nav-link.active {
+    background-color: black;
+    color: #fff;
+}
+
+.nav-link:hover {
+    background-color: black;
+    color: #fff;
+    cursor: pointer;
+}

@@ -1,4 +1,13 @@
-export { Topping } from './topping';
-export { Crust } from './crust';
-export { PizzaSauce } from './pizza-sauce';
+export { Coupon } from './coupon';
+export { CouponAction } from './coupon-action';
 export { CouponType } from './coupon-type';
+export { Crust } from './crust';
+export { Order } from './order';
+export { OrderDetail } from './order-detail';
+export { OrderStatus } from './order-status';
+export { PizzaSauce } from './pizza-sauce';
+export { PizzaSize } from './pizza-size';
+export { User } from './user';
+export { UserType } from './user-type';
+export { ToppingType } from './topping-type';
+export { Topping } from './topping';
