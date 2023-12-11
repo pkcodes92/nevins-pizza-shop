@@ -14,3 +14,7 @@ export { GetCouponTypesResponse } from './get-coupon-types-response';
 export { GetCouponTypeResponse } from './get-coupon-type-response';
 export { GetOrderStatusesResponse } from './get-order-statuses-response';
 export { GetOrderStatusResponse } from './get-order-status-response';
+export { GetOrderDetailsResponse } from './get-order-details-response';
+export { GetOrderDetailResponse } from './get-order-detail-response';
+export { GetPizzaSizesResponse } from './get-pizza-sizes-response';
+export { GetPizzaSizeResponse } from './get-pizza-size-response';
