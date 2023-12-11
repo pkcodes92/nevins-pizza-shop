@@ -10,6 +10,10 @@ export { AddUserTypeResponse } from './add-user-type-response';
 
 export { GetCrustsResponse } from './get-crusts-response';
 export { GetCrustResponse } from './get-crust-response';
+export { GetCouponsResponse } from './get-coupons-response';
+export { GetCouponResponse } from './get-coupon-response';
+export { GetCouponActionsResponse } from './get-coupon-actions-response';
+export { GetCouponActionResponse } from './get-coupon-action-response';
 export { GetCouponTypesResponse } from './get-coupon-types-response';
 export { GetCouponTypeResponse } from './get-coupon-type-response';
 export { GetOrderStatusesResponse } from './get-order-statuses-response';
