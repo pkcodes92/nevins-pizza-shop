@@ -22,4 +22,6 @@ export { UpdateOrderStatusRequest } from './update-order-status-request';
 export { UpdateOrderDetailRequest } from './update-order-detail-request';
 export { UpdateOrderRequest } from './update-order-request';
 export { UpdateUserRequest } from './update-user-request';
+export { UpdateUserTypeRequest } from './update-user-type-request';
 export { UpdateToppingRequest } from './update-topping-request';
+export { UpdateToppingTypeRequest } from './update-topping-type-request';
