@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
-import { ConfigComponent } from './components/config/config.component';
 import { OrderComponent } from './components/order/order.component';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -14,7 +13,6 @@ import { AppRoutingModule } from './app-routing.module';
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    ConfigComponent,
     OrderComponent
   ],
   imports: [
