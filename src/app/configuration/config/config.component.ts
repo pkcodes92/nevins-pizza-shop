@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-config',
+  standalone: true,
+  imports: [],
   templateUrl: './config.component.html',
-  styleUrls: ['./config.component.scss']
+  styleUrl: './config.component.scss'
 })
 export class ConfigComponent {
 
