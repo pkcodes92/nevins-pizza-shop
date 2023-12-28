@@ -1,1 +1,18 @@
-<p>configuration config works!</p>
+<nav>
+  <div class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
+    <div class="nav-link" id="nav-crust-tab" data-bs-toggle="tab" data-bs-target="#nav-crusts" type="button">Crusts</div>
+    <div class="nav-link" id="nav-topping-tab" data-bs-toggle="tab" data-bs-target="#nav-toppings" type="button">Toppings</div>
+    <div class="nav-link" id="nav-cheese-tab" data-bs-toggle="tab" data-bs-target="#nav-cheeses" type="button">Cheeses</div>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane" id="nav-crusts" role="tabpanel" aria-labelledby="nav-crust-tab">
+    <app-crust></app-crust>
+  </div>
+  <div class="tab-pane" id="nav-toppings" role="tabpanel" aria-labelledby="nav-topping-tab">
+    <app-topping></app-topping>
+  </div>
+  <div class="tab-pane" id="nav-cheeses" roles="tabpanel" aria-labelledby="nav-cheese-tab">
+    <app-cheese></app-cheese>
+  </div>
+</div>
