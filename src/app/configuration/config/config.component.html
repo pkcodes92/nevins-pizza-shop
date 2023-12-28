@@ -3,6 +3,9 @@
     <div class="nav-link" id="nav-crust-tab" data-bs-toggle="tab" data-bs-target="#nav-crusts" type="button">Crusts</div>
     <div class="nav-link" id="nav-topping-tab" data-bs-toggle="tab" data-bs-target="#nav-toppings" type="button">Toppings</div>
     <div class="nav-link" id="nav-cheese-tab" data-bs-toggle="tab" data-bs-target="#nav-cheeses" type="button">Cheeses</div>
+    <div class="nav-link" id="nav-topping-type-tab" data-bs-toggle="tab" data-bs-target="#nav-topping-types" type="button">Topping Type</div>
+    <div class="nav-link" id="nav-sauce-tab" data-bs-toggle="tab" data-bs-target="#nav-sauces" type="button">Sauces</div>
+    <div class="nav-link" id="nav-size-tab" data-bs-toggle="tab" data-bs-target="#nav-sizes" type="button">Sizes</div>
   </div>
 </nav>
 <div class="tab-content" id="nav-tabContent">
@@ -12,7 +15,16 @@
   <div class="tab-pane" id="nav-toppings" role="tabpanel" aria-labelledby="nav-topping-tab">
     <app-topping></app-topping>
   </div>
-  <div class="tab-pane" id="nav-cheeses" roles="tabpanel" aria-labelledby="nav-cheese-tab">
+  <div class="tab-pane" id="nav-cheeses" role="tabpanel" aria-labelledby="nav-cheese-tab">
     <app-cheese></app-cheese>
+  </div>
+  <div class="tab-pane" id="nav-topping-types" role="tabpanel" aria-labelledby="nav-topping-type-tab">
+    <app-topping-type></app-topping-type>
+  </div>
+  <div class="tab-pane" id="nav-sauces" role="tabpanel" aria-labelledby="nav-sauce-tab">
+    <app-sauce></app-sauce>
+  </div>
+  <div class="tab-pane" id="nav-sizes" role="tabpanel" aria-labelledby="nav-size-tab">
+    <app-pizza-size></app-pizza-size>
   </div>
 </div>
