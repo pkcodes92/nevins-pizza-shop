@@ -1,3 +1,4 @@
+export { AddCheeseRequest } from './add-cheese-request';
 export { AddCrustRequest } from './add-crust-request';
 export { AddCouponActionRequest } from './add-coupon-action-request';
 export { AddCouponRequest } from './add-coupon-request';
@@ -25,3 +26,4 @@ export { UpdateUserRequest } from './update-user-request';
 export { UpdateUserTypeRequest } from './update-user-type-request';
 export { UpdateToppingRequest } from './update-topping-request';
 export { UpdateToppingTypeRequest } from './update-topping-type-request';
+export { UpdateCheeseRequest } from './update-cheese-request';
