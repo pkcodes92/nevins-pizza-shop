@@ -7,6 +7,7 @@ export { AddPizzaSizeResponse } from './add-pizza-size-response';
 export { AddToppingResponse } from './add-topping-response';
 export { AddUserResponse } from './add-user-response';
 export { AddUserTypeResponse } from './add-user-type-response';
+export { AddCheeseResponse } from './add-cheese-response';
 
 export { GetCrustsResponse } from './get-crusts-response';
 export { GetCrustResponse } from './get-crust-response';
@@ -46,3 +47,4 @@ export { UpdateToppingTypeResponse } from './update-topping-type-response';
 export { UpdateToppingResponse } from './update-topping-response';
 export { UpdateUserResponse } from './update-user-response';
 export { UpdateUserTypeResponse } from './update-user-type-response';
+export { UpdateCheeseResponse } from './update-cheese-response';
