@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ConfigComponent } from './config.component';
+import { ConfigComponent } from './config/config.component';
 
 const routes: Routes = [
     { path: '', component: ConfigComponent}
@@ -12,5 +12,5 @@ const routes: Routes = [
     exports: [RouterModule]
 })
 export class ConfigurationRoutingModule {
-    
+
 }

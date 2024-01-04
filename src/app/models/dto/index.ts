@@ -11,3 +11,4 @@ export { User } from './user';
 export { UserType } from './user-type';
 export { ToppingType } from './topping-type';
 export { Topping } from './topping';
+export { Cheese } from './cheese';
