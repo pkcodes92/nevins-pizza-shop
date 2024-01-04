@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Cheese } from 'src/app/models/dto';
 
 @Component({
   selector: 'app-cheese',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './cheese.component.scss'
 })
 export class CheeseComponent {
-
+  loading!: boolean;
+  cheeses!: Cheese[];
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToppingType } from 'src/app/models/dto';
 
 @Component({
   selector: 'app-topping-type',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './topping-type.component.scss'
 })
 export class ToppingTypeComponent {
-
+  loading!: boolean;
+  toppingTypes!: ToppingType[];
 }
