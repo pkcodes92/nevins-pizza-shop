@@ -33,6 +33,8 @@ export { GetUsersResponse } from './get-users-response';
 export { GetUserResponse } from './get-user-response';
 export { GetUserTypesResponse } from './get-user-types-response';
 export { GetUserTypeResponse } from './get-user-type-response';
+export { GetCheesesResponse } from './get-cheeses-response';
+export { GetCheeseResponse } from './get-cheese-response';
 
 export { UpdateCouponResponse } from './update-coupon-response';
 export { UpdateCouponActionResponse } from './update-coupon-action-response';
