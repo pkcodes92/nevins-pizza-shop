@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PizzaSize } from 'src/app/models/dto';
 
 @Component({
   selector: 'app-pizza-size',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './pizza-size.component.scss'
 })
 export class PizzaSizeComponent {
-
+  loading!: boolean;
+  pizzaSizes!: PizzaSize[];
 }

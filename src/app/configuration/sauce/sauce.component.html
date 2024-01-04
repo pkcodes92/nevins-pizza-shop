@@ -1,1 +1,9 @@
-<p>sauce works!</p>
+<div *ngIf="!loading && pizzaSauces; else showLoading"
+    class="container-fluid"
+    style="display: flex; flex-direction: column; margin-top: 10px;">
+    <div style="margin-top: 10px;">
+    </div>
+</div>
+<ng-template #showLoading>
+    <p>Loading...</p>
+</ng-template>
