@@ -60,4 +60,24 @@ export class SauceComponent implements OnInit, OnDestroy {
       'description': ''
     });
   }
+
+  updatePizzaSauce(i: number) {
+    let sauceToUpdate = this.pizzaSauces[i];
+
+    this.addEditSauceForm.setValue({
+      'id': sauceToUpdate.id,
+      'code': sauceToUpdate.code,
+      'description': sauceToUpdate.description
+    });
+  }
+
+  deletePizzaSauce(i: number) {
+    let sauceToDelete = this.pizzaSauces[i];
+
+    console.log(`Going to delete sauce with the ID: ${sauceToDelete.id}`);
+  }
+
+  onAddEditSauceFormSubmit() {
+    console.log('Making sure to have things determining whether to add or edit');
+  }
 }
