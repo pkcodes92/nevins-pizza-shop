@@ -43,7 +43,9 @@
                     <td style="vertical-align: middle;">{{sauce.description}}</td>
                     <td style="vertical-align: middle;">
                         <div class="button-group">
-                            <button type="button" class="btn btn-success" (click)="updatePizzaSauce(i)><i class="bi bi-arrow-clockwise"></i></button>
+                            <button type="button" class="btn btn-success" (click)="updatePizzaSauce(i)"><i class="bi bi-arrow-clockwise"></i></button>
+                            <div class="vr" style="margin-left: 10px; margin-right: 10px;"></div>
+                            <button type="button" class="btn btn-danger" (click)="deletePizzaSauce(i)"><i class="bi bi-x-lg"></i></button>
                         </div>
                     </td>
                 </tr>
