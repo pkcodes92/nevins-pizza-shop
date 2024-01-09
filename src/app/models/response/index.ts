@@ -50,3 +50,5 @@ export { UpdateToppingResponse } from './update-topping-response';
 export { UpdateUserResponse } from './update-user-response';
 export { UpdateUserTypeResponse } from './update-user-type-response';
 export { UpdateCheeseResponse } from './update-cheese-response';
+
+export { DeletePizzaSauceResponse } from './delete-pizza-sauce-response';

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { AddPizzaSauceRequest, UpdatePizzaSauceRequest } from '../models/request';
 import { Observable } from 'rxjs';
-import { AddPizzaSauceResponse, GetPizzaSauceResponse, GetPizzaSaucesResponse, UpdatePizzaSauceResponse } from '../models/response';
+import { AddPizzaSauceResponse, DeletePizzaSauceResponse, GetPizzaSauceResponse, GetPizzaSaucesResponse, UpdatePizzaSauceResponse } from '../models/response';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +34,12 @@ export class ApiService {
   updateSauce(updateSauceRequest: UpdatePizzaSauceRequest): Observable<UpdatePizzaSauceResponse> {
     let reqHeaders = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.put<UpdatePizzaSauceResponse>(this.apiUrl + '/PizzSauce/UpdatePizzaSauce', JSON.stringify(updateSauceRequest), { headers: reqHeaders});
+  }
+  // #endregion
+
+  // #region Deleting entities
+  deleteSauce(id: number): Observable<DeletePizzaSauceResponse> {
+    return this.http.delete<DeletePizzaSauceResponse>(this.apiUrl + `/PizzaSauce/DeleteSauce?id=${id}`);
   }
   // #endregion
 }
