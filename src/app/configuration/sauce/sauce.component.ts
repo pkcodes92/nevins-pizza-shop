@@ -61,9 +61,14 @@ export class SauceComponent implements OnInit, OnDestroy {
   }
 
   private getSauces() {
+    this.loading = true;
     this.getSaucesSubscription = this.apiService.getAllSauces().subscribe({
       next: (response) => {
+        if (response.statusCode === 200) {
+          this.toastService.success('Got all of the sauces from the database', response.statusCode.toString());
+        }
 
+        this.loading = false;
       },
       error: (error) => {
         this.toastService.error('Error occurred while getting the sauces', error.status.toString());
