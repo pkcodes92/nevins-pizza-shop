@@ -9,6 +9,8 @@ import { PizzaSizeComponent } from './pizza-size/pizza-size.component';
 import { CrustComponent } from './crust/crust.component';
 import { CheeseComponent } from './cheese/cheese.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ApiService } from '../services/api.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,9 +23,13 @@ import { ReactiveFormsModule } from '@angular/forms';
       CheeseComponent
     ],
   imports: [
-    CommonModule,
     ConfigurationRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    CommonModule
+  ],
+  providers: [
+    ApiService
   ]
 })
 export class ConfigurationModule { }

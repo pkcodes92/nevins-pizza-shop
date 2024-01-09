@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { PizzaSauce } from 'src/app/models/dto';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-sauce',
@@ -19,8 +21,13 @@ export class SauceComponent implements OnInit, OnDestroy {
   getSauceSubscription!: Subscription;
   updateSubscription!: Subscription;
 
+  constructor(private apiService: ApiService, private toastService: ToastrService) {
+    
+  }
+
   ngOnInit(): void {
       this.initializeForm();
+      this.getSauces();
   }
 
   ngOnDestroy(): void {
@@ -51,6 +58,18 @@ export class SauceComponent implements OnInit, OnDestroy {
       'code': new FormControl(null),
       'description': new FormControl(null)
     });
+  }
+
+  private getSauces() {
+    this.getSaucesSubscription = this.apiService.getAllSauces().subscribe({
+      next: (response) => {
+
+      },
+      error: (error) => {
+        this.toastService.error('Error occurred while getting the sauces', error.status.toString());
+        this.loading = false;
+      }
+    })
   }
 
   clearSauceForm() {
