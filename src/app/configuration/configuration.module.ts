@@ -8,20 +8,22 @@ import { SauceComponent } from './sauce/sauce.component';
 import { PizzaSizeComponent } from './pizza-size/pizza-size.component';
 import { CrustComponent } from './crust/crust.component';
 import { CheeseComponent } from './cheese/cheese.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
       ConfigComponent,
       ToppingTypeComponent,
-       ToppingComponent,
-       SauceComponent,
-       PizzaSizeComponent,
+      ToppingComponent,
+      SauceComponent,
+      PizzaSizeComponent,
       CrustComponent,
       CheeseComponent
     ],
   imports: [
     CommonModule,
-    ConfigurationRoutingModule
+    ConfigurationRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class ConfigurationModule { }
