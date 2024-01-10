@@ -58,8 +58,8 @@ export class SauceComponent implements OnInit, OnDestroy {
   private initializeForm() {
     this.addEditSauceForm = new FormGroup({
       'id': new FormControl(null),
-      'code': new FormControl(null, Validators.required),
-      'description': new FormControl(null, Validators.required)
+      'code': new FormControl(null),
+      'description': new FormControl(null)
     });
   }
 
