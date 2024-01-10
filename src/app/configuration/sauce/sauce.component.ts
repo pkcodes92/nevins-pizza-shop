@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { PizzaSauce } from 'src/app/models/dto';
@@ -58,8 +58,8 @@ export class SauceComponent implements OnInit, OnDestroy {
   private initializeForm() {
     this.addEditSauceForm = new FormGroup({
       'id': new FormControl(null),
-      'code': new FormControl(null),
-      'description': new FormControl(null)
+      'code': new FormControl(null, Validators.required),
+      'description': new FormControl(null, Validators.required)
     });
   }
 

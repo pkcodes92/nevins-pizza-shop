@@ -1,6 +1,6 @@
 {
-    "workbench.colorCustomizations": {
-    },
-    "editor.fontFamily": "Hack",
+    "workbench.colorTheme": "One Dark Pro",
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontSize": 13,
     "editor.fontLigatures": true
 }
