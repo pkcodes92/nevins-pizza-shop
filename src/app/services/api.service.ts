@@ -1,9 +1,22 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
-import { AddPizzaSauceRequest, UpdatePizzaSauceRequest } from '../models/request';
+import { 
+  AddCrustRequest, 
+  AddPizzaSauceRequest, 
+  UpdateCrustRequest, 
+  UpdatePizzaSauceRequest } from '../models/request';
 import { Observable } from 'rxjs';
-import { AddPizzaSauceResponse, DeletePizzaSauceResponse, GetCrustsResponse, GetPizzaSauceResponse, GetPizzaSaucesResponse, UpdatePizzaSauceResponse } from '../models/response';
+import { 
+  AddCrustResponse, 
+  AddPizzaSauceResponse, 
+  DeleteCrustResponse, 
+  DeletePizzaSauceResponse, 
+  GetCrustsResponse, 
+  GetPizzaSauceResponse, 
+  GetPizzaSaucesResponse, 
+  UpdateCrustResponse, 
+  UpdatePizzaSauceResponse } from '../models/response';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +30,11 @@ export class ApiService {
   addSauce(addSauceRequest: AddPizzaSauceRequest): Observable<AddPizzaSauceResponse> {
     const reqHeaders = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.post<AddPizzaSauceResponse>(this.apiUrl + '/PizzaSauce/AddPizzaSauce', JSON.stringify(addSauceRequest), {headers: reqHeaders});
+  }
+
+  addCrust(addCrustRequest: AddCrustRequest): Observable<AddCrustResponse> {
+    const reqHeaders = new HttpHeaders({ 'Content-Type': 'application/json'});
+    return this.http.post<AddCrustResponse>(this.apiUrl + '/Crust/AddNewCrust', JSON.stringify(addCrustRequest), { headers: reqHeaders});
   }
   // #endregion
 
@@ -39,11 +57,20 @@ export class ApiService {
     const reqHeaders = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.put<UpdatePizzaSauceResponse>(this.apiUrl + '/PizzSauce/UpdatePizzaSauce', JSON.stringify(updateSauceRequest), { headers: reqHeaders});
   }
+
+  updateCrust(updateCrustRequest: UpdateCrustRequest): Observable<UpdateCrustResponse> {
+    const reqHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.put<UpdateCrustResponse>(this.apiUrl + '/Crust/UpdateCrust', JSON.stringify(updateCrustRequest), { headers: reqHeaders });
+  }
   // #endregion
 
   // #region Deleting entities
   deleteSauce(id: number): Observable<DeletePizzaSauceResponse> {
     return this.http.delete<DeletePizzaSauceResponse>(this.apiUrl + `/PizzaSauce/DeleteSauce?id=${id}`);
+  }
+
+  deleteCrust(id: number): Observable<DeleteCrustResponse> {
+    return this.http.delete<DeleteCrustResponse>(this.apiUrl + `/Crust/DeleteCrust?id=${id}`);
   }
   // #endregion
 }

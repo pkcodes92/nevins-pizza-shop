@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { Crust } from 'src/app/models/dto';
@@ -75,6 +75,10 @@ export class CrustComponent implements OnInit, OnDestroy {
   }
 
   private initializeForm() {
-
+    this.addEditCrustForm = new FormGroup({
+      'id': new FormControl(null),
+      'code': new FormControl(null),
+      'description': new FormControl(null)
+    });
   }
 }

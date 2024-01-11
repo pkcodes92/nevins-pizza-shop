@@ -56,3 +56,4 @@ export { DeleteCheeseResponse } from './delete-cheese-response';
 export { DeletePizzaSizeResponse } from './delete-pizza-size-response';
 export { DeleteOrderResponse } from './delete-order-response';
 export { DeleteToppingTypeResponse } from './delete-topping-type-response';
+export { DeleteCrustResponse } from './delete-crust-response';
