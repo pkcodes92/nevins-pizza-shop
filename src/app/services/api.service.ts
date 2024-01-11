@@ -2,16 +2,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { 
+  AddCheeseRequest,
   AddCrustRequest, 
   AddPizzaSauceRequest, 
   UpdateCrustRequest, 
   UpdatePizzaSauceRequest } from '../models/request';
 import { Observable } from 'rxjs';
 import { 
+  AddCheeseResponse,
   AddCrustResponse, 
   AddPizzaSauceResponse, 
   DeleteCrustResponse, 
   DeletePizzaSauceResponse, 
+  GetCheesesResponse, 
   GetCrustsResponse, 
   GetPizzaSauceResponse, 
   GetPizzaSaucesResponse, 
@@ -36,9 +39,18 @@ export class ApiService {
     const reqHeaders = new HttpHeaders({ 'Content-Type': 'application/json'});
     return this.http.post<AddCrustResponse>(this.apiUrl + '/Crust/AddNewCrust', JSON.stringify(addCrustRequest), { headers: reqHeaders});
   }
+
+  addCheese(addCheeseRequest: AddCheeseRequest) : Observable<AddCheeseResponse> {
+    const reqHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.post<AddCheeseResponse>(this.apiUrl + '/Cheese/AddNewCheese', JSON.stringify(addCheeseRequest), { headers: reqHeaders });
+  }
   // #endregion
 
   // #region Getting entities
+  getCheeses(): Observable<GetCheesesResponse> {
+    return this.http.get<GetCheesesResponse>(this.apiUrl + '/Cheese/GetAllCheeses');
+  }
+
   getSauces(): Observable<GetPizzaSaucesResponse> {
     return this.http.get<GetPizzaSaucesResponse>(this.apiUrl + '/PizzaSauce/GetAllSauces');
   }
