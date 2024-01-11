@@ -17,10 +17,6 @@ export class CrustComponent implements OnInit, OnDestroy {
   crusts!: Crust[];
   addEditCrustForm!: FormGroup;
 
-  constructor(private apiService: ApiService, private toastrService: ToastrService) {
-
-  }
-
   // #region Subscriptions
   addCrustSubscription!: Subscription;
   getCrustsSubscription!: Subscription;
@@ -28,6 +24,10 @@ export class CrustComponent implements OnInit, OnDestroy {
   deleteCrustSubscription!: Subscription;
   getCrustSubscription!: Subscription;
   // #endregion
+
+  constructor(private apiService: ApiService, private toastrService: ToastrService) {
+
+  }
 
   ngOnInit(): void {
     this.getCrusts();
