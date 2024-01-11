@@ -5,6 +5,7 @@ import {
   AddCheeseRequest,
   AddCrustRequest, 
   AddPizzaSauceRequest, 
+  AddPizzaSizeRequest, 
   UpdateCrustRequest, 
   UpdatePizzaSauceRequest } from '../models/request';
 import { Observable } from 'rxjs';
@@ -12,14 +13,19 @@ import {
   AddCheeseResponse,
   AddCrustResponse, 
   AddPizzaSauceResponse, 
+  AddPizzaSizeResponse, 
   DeleteCrustResponse, 
   DeletePizzaSauceResponse, 
+  DeletePizzaSizeResponse, 
   GetCheesesResponse, 
   GetCrustsResponse, 
   GetPizzaSauceResponse, 
   GetPizzaSaucesResponse, 
+  GetPizzaSizesResponse, 
   UpdateCrustResponse, 
-  UpdatePizzaSauceResponse } from '../models/response';
+  UpdatePizzaSauceResponse, 
+  UpdatePizzaSizeResponse
+} from '../models/response';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +50,11 @@ export class ApiService {
     const reqHeaders = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.post<AddCheeseResponse>(this.apiUrl + '/Cheese/AddNewCheese', JSON.stringify(addCheeseRequest), { headers: reqHeaders });
   }
+
+  addSize(addSizeRequest: AddPizzaSizeRequest) : Observable<AddPizzaSizeResponse> {
+    const reqHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.post<AddPizzaSizeResponse>(this.apiUrl + '/PizzaSize/AddNewSize', JSON.stringify(addSizeRequest), { headers: reqHeaders });
+  }
   // #endregion
 
   // #region Getting entities
@@ -59,7 +70,11 @@ export class ApiService {
     return this.http.get<GetCrustsResponse>(this.apiUrl + '/Crust/GetAllCrusts');
   }
 
-  getPizzaSauce(id: number): Observable<GetPizzaSauceResponse> {
+  getSizes(): Observable<GetPizzaSizesResponse> {
+    return this.http.get<GetPizzaSizesResponse>(this.apiUrl + '/PizzaSize/GetAllSizes');
+  }
+
+  getSauce(id: number): Observable<GetPizzaSauceResponse> {
     return this.http.get<GetPizzaSauceResponse>(this.apiUrl + `/PizzaSauce/GetPizzaSauceById?id=${id}`);
   }
   // #endregion
@@ -74,6 +89,11 @@ export class ApiService {
     const reqHeaders = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.put<UpdateCrustResponse>(this.apiUrl + '/Crust/UpdateCrust', JSON.stringify(updateCrustRequest), { headers: reqHeaders });
   }
+
+  updateSize(updatePizzaSizeRequest: UpdatePizzaSauceRequest): Observable<UpdatePizzaSizeResponse> {
+    const reqHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.put<UpdatePizzaSizeResponse>(this.apiUrl + '/PizzaSize/UpdatePizzaSize', JSON.stringify(updatePizzaSizeRequest), { headers: reqHeaders });
+  }
   // #endregion
 
   // #region Deleting entities
@@ -83,6 +103,10 @@ export class ApiService {
 
   deleteCrust(id: number): Observable<DeleteCrustResponse> {
     return this.http.delete<DeleteCrustResponse>(this.apiUrl + `/Crust/DeleteCrust?id=${id}`);
+  }
+
+  deleteSize(id: number): Observable<DeletePizzaSizeResponse> {
+    return this.http.delete<DeletePizzaSizeResponse>(this.apiUrl + `/PizzaSize/DeletePizzaSize?id=${id}`);
   }
   // #endregion
 }
