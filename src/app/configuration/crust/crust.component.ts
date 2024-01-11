@@ -1,4 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { Crust } from 'src/app/models/dto';
 
 @Component({
@@ -7,9 +9,16 @@ import { Crust } from 'src/app/models/dto';
   styleUrl: './crust.component.scss'
 })
 export class CrustComponent implements OnInit, OnDestroy {
-  loading: boolean = false;
+  loading!: boolean;
   editMode: boolean = true;
+  
   crusts!: Crust[];
+
+  addEditCrustForm!: FormGroup;
+
+  // #region Subscriptions
+  addCrustSubscription!: Subscription;
+  // #endregion
 
   ngOnInit(): void {
   }
