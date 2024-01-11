@@ -30,7 +30,38 @@ export class CheeseComponent implements OnInit, OnDestroy {
     private toastService: ToastrService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getCheeses();
+    this.initializeForm();
+  }
 
-  ngOnDestroy() {}
+  ngOnDestroy() {
+    if (this.addCheeseSubscription) {
+      this.addCheeseSubscription.unsubscribe();
+    }
+
+    if (this.updateCheeseSubscription) {
+      this.updateCheeseSubscription.unsubscribe();
+    }
+
+    if (this.getCheeseSubscription) {
+      this.getCheeseSubscription.unsubscribe();
+    }
+
+    if (this.getCheesesSubscription) {
+      this.getCheesesSubscription.unsubscribe();
+    }
+
+    if (this.deleteCheeseSubscription) {
+      this.deleteCheeseSubscription.unsubscribe();
+    }
+  }
+
+  private getCheeses() {
+
+  }
+
+  private initializeForm() {
+    
+  }
 }

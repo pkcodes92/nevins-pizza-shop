@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { PizzaSauce } from 'src/app/models/dto';
@@ -69,7 +69,7 @@ export class SauceComponent implements OnInit, OnDestroy {
 
   private getSauces() {
     this.loading = true;
-    this.getSaucesSubscription = this.apiService.getAllSauces().subscribe({
+    this.getSaucesSubscription = this.apiService.getSauces().subscribe({
       next: (response) => {
         if (response.statusCode === 200) {
           this.toastService.success(

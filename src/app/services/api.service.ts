@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { AddPizzaSauceRequest, UpdatePizzaSauceRequest } from '../models/request';
 import { Observable } from 'rxjs';
-import { AddPizzaSauceResponse, DeletePizzaSauceResponse, GetPizzaSauceResponse, GetPizzaSaucesResponse, UpdatePizzaSauceResponse } from '../models/response';
+import { AddPizzaSauceResponse, DeletePizzaSauceResponse, GetCrustsResponse, GetPizzaSauceResponse, GetPizzaSaucesResponse, UpdatePizzaSauceResponse } from '../models/response';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +21,12 @@ export class ApiService {
   // #endregion
 
   // #region Getting entities
-  getAllSauces(): Observable<GetPizzaSaucesResponse> {
+  getSauces(): Observable<GetPizzaSaucesResponse> {
     return this.http.get<GetPizzaSaucesResponse>(this.apiUrl + '/PizzaSauce/GetAllSauces');
+  }
+
+  getCrusts(): Observable<GetCrustsResponse> {
+    return this.http.get<GetCrustsResponse>(this.apiUrl + '/Crust/GetAllCrusts');
   }
 
   getPizzaSauce(id: number): Observable<GetPizzaSauceResponse> {
