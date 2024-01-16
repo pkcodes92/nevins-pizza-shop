@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { Cheese } from 'src/app/models/dto';
+import { AddCheeseRequest } from 'src/app/models/request';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -80,6 +81,39 @@ export class CheeseComponent implements OnInit, OnDestroy {
       'id': new FormControl(null),
       'code': new FormControl(null),
       'description': new FormControl(null)
+    });
+  }
+
+  private determineEditMode(request: AddCheeseRequest) {
+    const cheese = this.cheeses.find(g => g.code == request.code);
+    if (cheese !== undefined) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  clearCheeseForm() {
+    this.addEditCheeseForm.setValue({
+      'id': '',
+      'code': '',
+      'description': ''
+    });
+  }
+
+  deleteCheese(i: number) {
+    const cheeseToDelete = this.cheeses[i];
+
+    console.log(`Going to delete the cheese with the ID: ${cheeseToDelete.id}`);
+  }
+
+  updateCheese(i: number) {
+    const cheeseToUpdate = this.cheeses[i];
+
+    this.addEditCheeseForm.setValue({
+      'id': cheeseToUpdate.id,
+      'code': cheeseToUpdate.code,
+      'description': cheeseToUpdate.description
     });
   }
 }

@@ -102,9 +102,9 @@ export class SauceComponent implements OnInit, OnDestroy {
 
   clearSauceForm() {
     this.addEditSauceForm.setValue({
-      id: '',
-      code: '',
-      description: '',
+      'id': '',
+      'code': '',
+      'description': '',
     });
   }
 
@@ -112,9 +112,9 @@ export class SauceComponent implements OnInit, OnDestroy {
     const sauceToUpdate = this.pizzaSauces[i];
 
     this.addEditSauceForm.setValue({
-      id: sauceToUpdate.id,
-      code: sauceToUpdate.code,
-      description: sauceToUpdate.description,
+      'id': sauceToUpdate.id,
+      'code': sauceToUpdate.code,
+      'description': sauceToUpdate.description,
     });
   }
 
