@@ -6,6 +6,7 @@ import {
   AddCrustRequest, 
   AddPizzaSauceRequest, 
   AddPizzaSizeRequest, 
+  UpdateCheeseRequest, 
   UpdateCrustRequest, 
   UpdatePizzaSauceRequest } from '../models/request';
 import { Observable } from 'rxjs';
@@ -22,6 +23,7 @@ import {
   GetPizzaSauceResponse, 
   GetPizzaSaucesResponse, 
   GetPizzaSizesResponse, 
+  UpdateCheeseResponse, 
   UpdateCrustResponse, 
   UpdatePizzaSauceResponse, 
   UpdatePizzaSizeResponse
@@ -93,6 +95,11 @@ export class ApiService {
   updateSize(updatePizzaSizeRequest: UpdatePizzaSauceRequest): Observable<UpdatePizzaSizeResponse> {
     const reqHeaders = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.put<UpdatePizzaSizeResponse>(this.apiUrl + '/PizzaSize/UpdatePizzaSize', JSON.stringify(updatePizzaSizeRequest), { headers: reqHeaders });
+  }
+
+  updateCheese(updateRequest: UpdateCheeseRequest): Observable<UpdateCheeseResponse> {
+    const reqHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.put<UpdateCheeseResponse>(this.apiUrl + '/Cheese/UpdateCheese', JSON.stringify(updateRequest), { headers: reqHeaders});
   }
   // #endregion
 

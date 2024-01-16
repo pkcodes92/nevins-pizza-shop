@@ -3,7 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { Cheese } from 'src/app/models/dto';
-import { AddCheeseRequest } from 'src/app/models/request';
+import { AddCheeseRequest, UpdateCheeseRequest } from 'src/app/models/request';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -115,5 +115,60 @@ export class CheeseComponent implements OnInit, OnDestroy {
       'code': cheeseToUpdate.code,
       'description': cheeseToUpdate.description
     });
+  }
+
+  onAddEditCheeseFormSubmit() {
+    this.loading = true;
+
+    if (this.addEditCheeseForm != null) {
+      this.editMode = this.determineEditMode(this.addEditCheeseForm.value);
+
+      if (!this.editMode) {
+        const addRequest = this.addEditCheeseForm.value as AddCheeseRequest;
+
+        addRequest.appName = "Nevins Pizza App";
+
+        this.addEditCheeseForm.controls['id'].disable();
+
+        this.addCheeseSubscription = this.apiService.addCheese(addRequest).subscribe({
+          next: (response) => {
+            if (response.statusCode === 201) {
+              this.toastService.success(`Successfully added the cheese with the code: ${addRequest.code}`, response.statusCode.toString());
+              location.reload();
+            } else {
+              this.toastService.warning(`Successfully created the new cheese with the code: ${addRequest.code}`, response.statusCode.toString());
+            }
+
+            this.loading = false;
+          },
+          error: (error) => {
+            this.toastService.error(`Error when adding the cheese: ${addRequest.code}`, error.status.toString());
+            this.loading = false;
+          }
+        });
+      } else {
+        const updateRequest = this.addEditCheeseForm.value as UpdateCheeseRequest;
+
+        updateRequest.appName = "Nevins Pizza App";
+
+        this.addEditCheeseForm.controls['id'].disable();
+
+        this.updateCheeseSubscription = this.apiService.updateCheese(updateRequest).subscribe({
+          next: (response) => {
+            this.loading = false;
+            if (response.statusCode === 200) {
+              this.toastService.success(`Successfully updated the cheese with the code: ${updateRequest.code}`, response.statusCode.toString());
+              location.reload();
+            } else {
+              this.toastService.warning(`There was an error updating the cheese with the code: ${updateRequest.code}`, response.statusCode.toString());
+            }
+          },
+          error: (error) => {
+            this.toastService.error(`Error occurred while updating the cheese with code: ${updateRequest.code}`, error.status.toString());
+            this.loading = false;
+          }
+        });
+      }
+    }
   }
 }
