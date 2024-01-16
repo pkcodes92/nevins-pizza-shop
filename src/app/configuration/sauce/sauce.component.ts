@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { Subscription } from 'rxjs';
+import { Subscription, take } from 'rxjs';
 import { PizzaSauce } from 'src/app/models/dto';
 import {
   AddPizzaSauceRequest,
@@ -121,7 +121,29 @@ export class SauceComponent implements OnInit, OnDestroy {
   deletePizzaSauce(i: number) {
     const sauceToDelete = this.pizzaSauces[i];
 
-    console.log(`Going to delete sauce with the ID: ${sauceToDelete.id}`);
+    this.toastService.warning(`Are you sure you want to remove the sauce: ${sauceToDelete.code}? Click on this notification to delete. Otherwise, do nothing.`, 'Remove Sauce')
+      .onTap.pipe(take(1)).subscribe(() => this.removeSauce(sauceToDelete));
+  }
+
+  removeSauce(sauceToDelete: PizzaSauce) {
+    this.loading = true;
+
+    this.deleteSauceSubscription = this.apiService.deleteSauce(sauceToDelete.id).subscribe({
+      next: (response) => {
+        if (response.statusCode === 204) {
+          this.toastService.success(`Successfully deleted the sauce with code: ${sauceToDelete.code}`, response.statusCode.toString());
+          location.reload();
+        } else {
+          this.toastService.warning(`Hit a snag while trying to delete the sauce: ${sauceToDelete.code}`, response.statusCode.toString());
+        }
+
+        this.loading = false;
+      },
+      error: (error) => {
+        this.loading = false;
+        this.toastService.error(`Error occurred while trying to delete the sauce: ${sauceToDelete.code}`, error.status.toString());
+      }
+    });
   }
 
   onAddEditSauceFormSubmit() {
