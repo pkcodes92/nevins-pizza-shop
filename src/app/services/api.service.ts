@@ -41,7 +41,7 @@ export class ApiService {
   // #region Adding entities
   addSauce(addSauceRequest: AddPizzaSauceRequest): Observable<AddPizzaSauceResponse> {
     const reqHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.post<AddPizzaSauceResponse>(this.apiUrl + '/PizzaSauce/AddPizzaSauce', JSON.stringify(addSauceRequest), {headers: reqHeaders});
+    return this.http.post<AddPizzaSauceResponse>(this.apiUrl + '/PizzaSauce/AddSauce', JSON.stringify(addSauceRequest), {headers: reqHeaders});
   }
 
   addCrust(addCrustRequest: AddCrustRequest): Observable<AddCrustResponse> {

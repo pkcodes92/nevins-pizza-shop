@@ -65,6 +65,7 @@ export class CheeseComponent implements OnInit, OnDestroy {
       next: (response) => {
         if (response.statusCode === 200) {
           this.toastrService.success('Successfully got the cheeses', response.statusCode.toString());
+          this.cheeses = response.cheeses;
         }
 
         this.loading = false;

@@ -72,20 +72,14 @@ export class SauceComponent implements OnInit, OnDestroy {
     this.getSaucesSubscription = this.apiService.getSauces().subscribe({
       next: (response) => {
         if (response.statusCode === 200) {
-          this.toastrService.success(
-            'Got all of the sauces from the database',
-            response.statusCode.toString()
-          );
+          this.toastrService.success('Got all of the sauces from the database', response.statusCode.toString());
           this.pizzaSauces = response.pizzaSauces;
         }
 
         this.loading = false;
       },
       error: (error) => {
-        this.toastrService.error(
-          'Error occurred while getting the sauces',
-          error.status.toString()
-        );
+        this.toastrService.error('Error occurred while getting the sauces', error.status.toString());
         this.loading = false;
       },
     });
@@ -160,25 +154,17 @@ export class SauceComponent implements OnInit, OnDestroy {
 
         this.addEditSauceForm.controls['id'].disable();
 
-        this.addSauceSubscription = this.apiService
-          .addSauce(addSauceRequest)
-          .subscribe({
+        this.addSauceSubscription = this.apiService.addSauce(addSauceRequest).subscribe({
             next: (response) => {
               if (response.statusCode === 201) {
-                this.toastrService.success(
-                  `Successfully added the new sauce: ${addSauceRequest.code}`,
-                  response.statusCode.toString()
-                );
+                this.toastrService.success(`Successfully added the new sauce: ${addSauceRequest.code}`, response.statusCode.toString());
                 location.reload();
               }
 
               this.loading = false;
             },
             error: (error) => {
-              this.toastrService.error(
-                `Error when adding the new sauce: ${addSauceRequest.code}`,
-                error.status.toString()
-              );
+              this.toastrService.error(`Error when adding the new sauce: ${addSauceRequest.code}`, error.status.toString());
               this.loading = false;
             },
           });
