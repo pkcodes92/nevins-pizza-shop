@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { Crust } from 'src/app/models/dto';
+import { AddCrustRequest, UpdateCrustRequest } from 'src/app/models/request';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -25,8 +26,9 @@ export class CrustComponent implements OnInit, OnDestroy {
   getCrustSubscription!: Subscription;
   // #endregion
 
-  constructor(private apiService: ApiService, private toastrService: ToastrService) {
-
+  constructor(
+    private apiService: ApiService, 
+    private toastrService: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -80,5 +82,77 @@ export class CrustComponent implements OnInit, OnDestroy {
       'code': new FormControl(null),
       'description': new FormControl(null)
     });
+  }
+
+  private determineEditMode(request: AddCrustRequest) {
+    const crust = this.crusts.find(g => g.code == request.code);
+    if (crust !== undefined) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  clearCrustForm() {
+    this.addEditCrustForm.setValue({
+      'id': '',
+      'code': '',
+      'description': ''
+    });
+  }
+
+  updateCrust(i: number) {
+    const crustToUpdate = this.crusts[i];
+
+    this.addEditCrustForm.setValue({
+      'id': crustToUpdate.id,
+      'code': crustToUpdate.code,
+      'description': crustToUpdate.description
+    });
+  }
+
+  deleteCrust(i: number) {
+    const crustToDelete = this.crusts[i];
+
+    console.log(`Going to delete the crust with the ID: ${crustToDelete.id}`);
+  }
+
+  onAddEditCrustFormSubmit() {
+    this.loading = true;
+
+    if (this.addEditCrustForm != null) {
+      this.editMode = this.determineEditMode(this.addEditCrustForm.value);
+
+      if (!this.editMode) {
+        const addRequest = this.addEditCrustForm.value as AddCrustRequest;
+
+        addRequest.appName = "Nevins Pizza App";
+
+        this.addEditCrustForm.controls['id'].disable();
+
+        this.addCrustSubscription = this.apiService.addCrust(addRequest).subscribe({
+          next: (response) => {
+            if (response.statusCode === 201) {
+              this.toastrService.success(`Successfully added the crust with the code: ${addRequest.code}`, response.statusCode.toString());
+              location.reload();
+            } else {
+              this.toastrService.warning(`Successfully created the new crust with the code: ${addRequest.code}`, response.statusCode.toString());
+            }
+
+            this.loading = false;
+          },
+          error: (error) => {
+            this.toastrService.error(`Error occurred while trying to add the new crust: ${addRequest.code}`, error.status.toString());
+            this.loading = false;
+          }
+        });
+      } else {
+        const updateRequest = this.addEditCrustForm.value as UpdateCrustRequest;
+
+        updateRequest.appName = "Nevins Pizza App";
+
+        this.addEditCrustForm.controls['id'].disable();
+      }
+    }
   }
 }

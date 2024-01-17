@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "Tokyo Storm Gogh",
+    "workbench.colorTheme": "One Dark Pro Darker",
     "workbench.editor.decorations.colors": true,
     "workbench.editor.labelFormat": "medium",
     "workbench.editor.decorations.badges": true,
@@ -8,7 +8,6 @@
     "editor.autoClosingBrackets": "always",
     "editor.bracketPairColorization.enabled": true,
     "editor.fontFamily": "JetBrains Mono",
-    "editor.fontSize": 14,
-    "editor.fontLigatures": true,
-    "editor.formatOnSave": true
+    "editor.fontSize": 13,
+    "editor.fontLigatures": true
 }

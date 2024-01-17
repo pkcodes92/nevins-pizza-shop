@@ -28,7 +28,7 @@ export class CheeseComponent implements OnInit, OnDestroy {
 
   constructor(
     private apiService: ApiService,
-    private toastService: ToastrService
+    private toastrService: ToastrService
   ) {}
 
   ngOnInit() {
@@ -64,13 +64,13 @@ export class CheeseComponent implements OnInit, OnDestroy {
     this.getCheesesSubscription = this.apiService.getCheeses().subscribe({
       next: (response) => {
         if (response.statusCode === 200) {
-          this.toastService.success('Successfully got the cheeses', response.statusCode.toString());
+          this.toastrService.success('Successfully got the cheeses', response.statusCode.toString());
         }
 
         this.loading = false;
       },
       error: (error) => {
-        this.toastService.error('Error occurred while getting the cheeses', error.status.toString());
+        this.toastrService.error('Error occurred while getting the cheeses', error.status.toString());
         this.loading = false;
       }
     });
@@ -133,16 +133,16 @@ export class CheeseComponent implements OnInit, OnDestroy {
         this.addCheeseSubscription = this.apiService.addCheese(addRequest).subscribe({
           next: (response) => {
             if (response.statusCode === 201) {
-              this.toastService.success(`Successfully added the cheese with the code: ${addRequest.code}`, response.statusCode.toString());
+              this.toastrService.success(`Successfully added the cheese with the code: ${addRequest.code}`, response.statusCode.toString());
               location.reload();
             } else {
-              this.toastService.warning(`Successfully created the new cheese with the code: ${addRequest.code}`, response.statusCode.toString());
+              this.toastrService.warning(`Successfully created the new cheese with the code: ${addRequest.code}`, response.statusCode.toString());
             }
 
             this.loading = false;
           },
           error: (error) => {
-            this.toastService.error(`Error when adding the cheese: ${addRequest.code}`, error.status.toString());
+            this.toastrService.error(`Error when adding the cheese: ${addRequest.code}`, error.status.toString());
             this.loading = false;
           }
         });
@@ -157,14 +157,14 @@ export class CheeseComponent implements OnInit, OnDestroy {
           next: (response) => {
             this.loading = false;
             if (response.statusCode === 200) {
-              this.toastService.success(`Successfully updated the cheese with the code: ${updateRequest.code}`, response.statusCode.toString());
+              this.toastrService.success(`Successfully updated the cheese with the code: ${updateRequest.code}`, response.statusCode.toString());
               location.reload();
             } else {
-              this.toastService.warning(`There was an error updating the cheese with the code: ${updateRequest.code}`, response.statusCode.toString());
+              this.toastrService.warning(`There was an error updating the cheese with the code: ${updateRequest.code}`, response.statusCode.toString());
             }
           },
           error: (error) => {
-            this.toastService.error(`Error occurred while updating the cheese with code: ${updateRequest.code}`, error.status.toString());
+            this.toastrService.error(`Error occurred while updating the cheese with code: ${updateRequest.code}`, error.status.toString());
             this.loading = false;
           }
         });
