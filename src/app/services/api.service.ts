@@ -15,6 +15,7 @@ import {
   AddCrustResponse, 
   AddPizzaSauceResponse, 
   AddPizzaSizeResponse, 
+  DeleteCheeseResponse, 
   DeleteCrustResponse, 
   DeletePizzaSauceResponse, 
   DeletePizzaSizeResponse, 
@@ -114,6 +115,10 @@ export class ApiService {
 
   deleteSize(id: number): Observable<DeletePizzaSizeResponse> {
     return this.http.delete<DeletePizzaSizeResponse>(this.apiUrl + `/PizzaSize/DeletePizzaSize?id=${id}`);
+  }
+
+  deleteCheese(id: number): Observable<DeleteCheeseResponse> {
+    return this.http.delete<DeleteCheeseResponse>(this.apiUrl + `/Cheese/DeleteCheese?id=${id}`);
   }
   // #endregion
 }

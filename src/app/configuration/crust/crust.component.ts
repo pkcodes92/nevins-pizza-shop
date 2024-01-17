@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { Subscription } from 'rxjs';
+import { Subscription, take } from 'rxjs';
 import { Crust } from 'src/app/models/dto';
 import { AddCrustRequest, UpdateCrustRequest } from 'src/app/models/request';
 import { ApiService } from 'src/app/services/api.service';
@@ -114,7 +114,8 @@ export class CrustComponent implements OnInit, OnDestroy {
   deleteCrust(i: number) {
     const crustToDelete = this.crusts[i];
 
-    console.log(`Going to delete the crust with the ID: ${crustToDelete.id}`);
+    this.toastrService.warning(`Are you sure you want to remove the crust: ${crustToDelete.code}? Click on this notification to delete. Otherwise, do nothing.`, 'Remove Crust')
+      .onTap.pipe(take(1)).subscribe(() => this.removeCrust(crustToDelete));
   }
 
   onAddEditCrustFormSubmit() {
@@ -171,5 +172,24 @@ export class CrustComponent implements OnInit, OnDestroy {
         });
       }
     }
+  }
+
+  removeCrust(crustToDelete: Crust) {
+    this.loading = true;
+
+    this.deleteCrustSubscription = this.apiService.deleteCrust(crustToDelete.id).subscribe({
+      next: (response) => {
+        if (response.statusCode === 204) {
+          this.toastrService.success(`Successfully deleted the crust with the code: ${crustToDelete.code}`, response.statusCode.toString());
+          location.reload();
+        } else {
+          this.toastrService.warning(`Hit a snag while trying to delete the crust with the code: ${crustToDelete.code}`, response.statusCode.toString());
+        }
+      },
+      error: (error) => {
+        this.toastrService.error(`Error occurred while trying to delete the crust with the code: ${crustToDelete.code}`, error.status.toString());
+        this.loading = false;
+      }
+    });
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { Subscription } from 'rxjs';
+import { Subscription, take } from 'rxjs';
 import { Cheese } from 'src/app/models/dto';
 import { AddCheeseRequest, UpdateCheeseRequest } from 'src/app/models/request';
 import { ApiService } from 'src/app/services/api.service';
@@ -104,7 +104,8 @@ export class CheeseComponent implements OnInit, OnDestroy {
   deleteCheese(i: number) {
     const cheeseToDelete = this.cheeses[i];
 
-    console.log(`Going to delete the cheese with the ID: ${cheeseToDelete.id}`);
+    this.toastrService.warning(`Are you sure you want the remove the cheese with the code: ${cheeseToDelete.code}? Click on this notification to delete. Otherwise, do nothing.`, 'Remove Cheese')
+      .onTap.pipe(take(1)).subscribe(() => this.removeCheese(cheeseToDelete));
   }
 
   updateCheese(i: number) {
@@ -170,5 +171,26 @@ export class CheeseComponent implements OnInit, OnDestroy {
         });
       }
     }
+  }
+
+  removeCheese(cheeseToDelete: Cheese) {
+    this.loading = true;
+
+    this.deleteCheeseSubscription = this.apiService.deleteCheese(cheeseToDelete.id).subscribe({
+      next: (response) => {
+        if (response.statusCode === 204) {
+          this.toastrService.success(`Successfully deleted the cheese with the code: ${cheeseToDelete.code}`, response.statusCode.toString());
+          location.reload();
+        } else {
+          this.toastrService.warning(`Hit a snag while trying to delete the cheese with the code: ${cheeseToDelete.code}`, response.statusCode.toString());
+        }
+
+        this.loading = false;
+      },
+      error: (error) => {
+        this.toastrService.error(`Error occurred while trying to delete the cheese with the code: ${cheeseToDelete.code}`, error.status.toString());
+        this.loading = false;
+      }
+    });
   }
 }

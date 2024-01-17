@@ -29,7 +29,7 @@ export class SauceComponent implements OnInit, OnDestroy {
 
   constructor(
     private apiService: ApiService,
-    private toastService: ToastrService
+    private toastrService: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -72,7 +72,7 @@ export class SauceComponent implements OnInit, OnDestroy {
     this.getSaucesSubscription = this.apiService.getSauces().subscribe({
       next: (response) => {
         if (response.statusCode === 200) {
-          this.toastService.success(
+          this.toastrService.success(
             'Got all of the sauces from the database',
             response.statusCode.toString()
           );
@@ -82,7 +82,7 @@ export class SauceComponent implements OnInit, OnDestroy {
         this.loading = false;
       },
       error: (error) => {
-        this.toastService.error(
+        this.toastrService.error(
           'Error occurred while getting the sauces',
           error.status.toString()
         );
@@ -121,7 +121,7 @@ export class SauceComponent implements OnInit, OnDestroy {
   deletePizzaSauce(i: number) {
     const sauceToDelete = this.pizzaSauces[i];
 
-    this.toastService.warning(`Are you sure you want to remove the sauce: ${sauceToDelete.code}? Click on this notification to delete. Otherwise, do nothing.`, 'Remove Sauce')
+    this.toastrService.warning(`Are you sure you want to remove the sauce: ${sauceToDelete.code}? Click on this notification to delete. Otherwise, do nothing.`, 'Remove Sauce')
       .onTap.pipe(take(1)).subscribe(() => this.removeSauce(sauceToDelete));
   }
 
@@ -131,17 +131,17 @@ export class SauceComponent implements OnInit, OnDestroy {
     this.deleteSauceSubscription = this.apiService.deleteSauce(sauceToDelete.id).subscribe({
       next: (response) => {
         if (response.statusCode === 204) {
-          this.toastService.success(`Successfully deleted the sauce with code: ${sauceToDelete.code}`, response.statusCode.toString());
+          this.toastrService.success(`Successfully deleted the sauce with code: ${sauceToDelete.code}`, response.statusCode.toString());
           location.reload();
         } else {
-          this.toastService.warning(`Hit a snag while trying to delete the sauce: ${sauceToDelete.code}`, response.statusCode.toString());
+          this.toastrService.warning(`Hit a snag while trying to delete the sauce: ${sauceToDelete.code}`, response.statusCode.toString());
         }
 
         this.loading = false;
       },
       error: (error) => {
         this.loading = false;
-        this.toastService.error(`Error occurred while trying to delete the sauce: ${sauceToDelete.code}`, error.status.toString());
+        this.toastrService.error(`Error occurred while trying to delete the sauce: ${sauceToDelete.code}`, error.status.toString());
       }
     });
   }
@@ -165,7 +165,7 @@ export class SauceComponent implements OnInit, OnDestroy {
           .subscribe({
             next: (response) => {
               if (response.statusCode === 201) {
-                this.toastService.success(
+                this.toastrService.success(
                   `Successfully added the new sauce: ${addSauceRequest.code}`,
                   response.statusCode.toString()
                 );
@@ -175,7 +175,7 @@ export class SauceComponent implements OnInit, OnDestroy {
               this.loading = false;
             },
             error: (error) => {
-              this.toastService.error(
+              this.toastrService.error(
                 `Error when adding the new sauce: ${addSauceRequest.code}`,
                 error.status.toString()
               );
@@ -195,7 +195,7 @@ export class SauceComponent implements OnInit, OnDestroy {
           .subscribe({
             next: (response) => {
               if (response.statusCode === 200) {
-                this.toastService.success(
+                this.toastrService.success(
                   `Successfully updated the sauce: ${updateSauceRequest.code}`,
                   response.statusCode.toString()
                 );
@@ -205,7 +205,7 @@ export class SauceComponent implements OnInit, OnDestroy {
               this.loading = false;
             },
             error: (error) => {
-              this.toastService.error(
+              this.toastrService.error(
                 `Error occurred updating the sauce: ${updateSauceRequest.code}`,
                 error.status.toString()
               );
