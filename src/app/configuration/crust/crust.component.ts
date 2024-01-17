@@ -152,6 +152,23 @@ export class CrustComponent implements OnInit, OnDestroy {
         updateRequest.appName = "Nevins Pizza App";
 
         this.addEditCrustForm.controls['id'].disable();
+
+        this.updateCrustSubscription = this.apiService.updateCrust(updateRequest).subscribe({
+          next: (response) => {
+            if (response.statusCode === 200) {
+              this.toastrService.success(`Successfully updated the crust with the code: ${updateRequest.code}`, response.statusCode.toString());
+              location.reload();
+            } else {
+              this.toastrService.warning(`Almost updated the crust with the code: ${updateRequest.code}`, response.statusCode.toString());
+            }
+
+            this.loading = false;
+          }, 
+          error: (error) => {
+            this.toastrService.error(`Error occurred while trying to update the crust with the code: ${updateRequest.code}`, error.status.toString());
+            this.loading = false;
+          }
+        });
       }
     }
   }
