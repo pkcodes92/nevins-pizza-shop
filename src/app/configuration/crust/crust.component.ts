@@ -185,6 +185,8 @@ export class CrustComponent implements OnInit, OnDestroy {
         } else {
           this.toastrService.warning(`Hit a snag while trying to delete the crust with the code: ${crustToDelete.code}`, response.statusCode.toString());
         }
+
+        this.loading = false;
       },
       error: (error) => {
         this.toastrService.error(`Error occurred while trying to delete the crust with the code: ${crustToDelete.code}`, error.status.toString());
