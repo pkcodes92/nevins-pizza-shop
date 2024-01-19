@@ -24,6 +24,7 @@ import {
   GetPizzaSauceResponse, 
   GetPizzaSaucesResponse, 
   GetPizzaSizesResponse, 
+  GetToppingsResponse, 
   UpdateCheeseResponse, 
   UpdateCrustResponse, 
   UpdatePizzaSauceResponse, 
@@ -75,6 +76,10 @@ export class ApiService {
 
   getSizes(): Observable<GetPizzaSizesResponse> {
     return this.http.get<GetPizzaSizesResponse>(this.apiUrl + '/PizzaSize/GetAllSizes');
+  }
+
+  getToppings(): Observable<GetToppingsResponse> {
+    return this.http.get<GetToppingsResponse>(this.apiUrl + '/Topping/GetToppings');
   }
 
   getSauce(id: number): Observable<GetPizzaSauceResponse> {

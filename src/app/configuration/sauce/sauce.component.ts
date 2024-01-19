@@ -21,16 +21,18 @@ export class SauceComponent implements OnInit, OnDestroy {
   pizzaSauces!: PizzaSauce[];
   addEditSauceForm!: FormGroup;
 
+  // #region Subscriptions
   addSauceSubscription!: Subscription;
   deleteSauceSubscription!: Subscription;
   getSaucesSubscription!: Subscription;
   getSauceSubscription!: Subscription;
   updateSauceSubscription!: Subscription;
+  // #endregion
 
   constructor(
     private apiService: ApiService,
-    private toastrService: ToastrService
-  ) {}
+    private toastrService: ToastrService) {
+  }
 
   ngOnInit(): void {
     this.initializeForm();
