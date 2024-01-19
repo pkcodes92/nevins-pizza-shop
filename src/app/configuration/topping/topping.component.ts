@@ -61,7 +61,8 @@ export class ToppingComponent implements OnInit, OnDestroy {
     this.addEditToppingForm = new FormGroup({
       id: new FormControl(null),
       name: new FormControl(null),
-      description: new FormControl(null)
+      description: new FormControl(null),
+      type: new FormControl(null)
     });
   }
 
@@ -90,7 +91,8 @@ export class ToppingComponent implements OnInit, OnDestroy {
     this.addEditToppingForm.setValue({
       id: '',
       name: '',
-      description: ''
+      description: '',
+      type: ''
     });
   }
 
@@ -103,6 +105,13 @@ export class ToppingComponent implements OnInit, OnDestroy {
   }
 
   updateTopping(i: number) {
-    console.log(`Updating the topping located: ${i}`);
+    const toppingToUpdate = this.toppings[i];
+
+    this.addEditToppingForm.setValue({
+      id: toppingToUpdate.id,
+      name: toppingToUpdate.name,
+      type: toppingToUpdate.type,
+      description: toppingToUpdate.description
+    });
   }
 }
