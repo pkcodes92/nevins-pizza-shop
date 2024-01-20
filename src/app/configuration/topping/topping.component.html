@@ -16,10 +16,14 @@
                     class="form-control"/>
             </div>
             <div class="form-group col">
-                <input type="text"
+                <!-- <input type="text"
                     formControlName="type"
                     placeholder="Topping Type"
-                    class="form-control"/>
+                    class="form-control"/> -->
+                <select formControlName="type" class="form-control">
+                    <option disabled>Select a topping type</option>
+                    <option *ngFor="let toppingType of toppingTypes">{{toppingType.code}}</option>
+                </select>
             </div>
             <div class="form-group col">
                 <input type="text"

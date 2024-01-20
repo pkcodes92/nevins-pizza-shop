@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
-import { Topping } from 'src/app/models/dto';
+import { Topping, ToppingType } from 'src/app/models/dto';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -15,12 +15,14 @@ export class ToppingComponent implements OnInit, OnDestroy {
   editMode: boolean = true;
 
   toppings!: Topping[];
+  toppingTypes!: ToppingType[];
   addEditToppingForm!: FormGroup;
 
   // #region Subscription
   addToppingSubscription!: Subscription;
   deleteToppingSubscription!: Subscription;
   getToppingsSubscription!: Subscription;
+  getToppingTypesSubscription!: Subscription;
   getToppingSubscription!: Subscription;
   updateToppingSubscription!: Subscription;  
   // #endregion
@@ -33,6 +35,7 @@ export class ToppingComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initializeForm();
     this.getToppings();
+    this.getToppingTypes();
   }
 
   ngOnDestroy(): void {
@@ -55,6 +58,10 @@ export class ToppingComponent implements OnInit, OnDestroy {
     if (this.updateToppingSubscription) {
       this.updateToppingSubscription.unsubscribe();
     }
+
+    if (this.getToppingTypesSubscription) {
+      this.getToppingTypesSubscription.unsubscribe();
+    }
   }
 
   private initializeForm() {
@@ -64,6 +71,27 @@ export class ToppingComponent implements OnInit, OnDestroy {
       description: new FormControl(null),
       type: new FormControl(null)
     });
+  }
+
+  private getToppingTypes() {
+    this.loading = true;
+
+    this.getToppingTypesSubscription = this.apiService.getToppingTypes().subscribe({
+      next: (response) => {
+        if (response.statusCode === 200) {
+          this.toastrService.success(`Successfully got all of the topping types`, response.statusCode.toString());
+          this.toppingTypes = response.toppingTypes;
+        } else {
+          this.toastrService.warning(`Error occurred while getting all the topping types`, response.statusCode.toString());
+        }
+
+        this.loading = false;
+      },
+      error: (error) => {
+        this.toastrService.error(`Error occurred while getting the topping types`, error.status.toString());
+        this.loading = false;
+      }
+    })
   }
 
   private getToppings() {
