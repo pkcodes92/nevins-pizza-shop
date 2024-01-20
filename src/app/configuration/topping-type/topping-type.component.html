@@ -2,6 +2,57 @@
     class="container-fluid"
     style="display: flex; flex-direction: column; margin-top: 10px;">
     <div style="margin-top: 10px;">
+        <form [formGroup]="addEditToppingTypeForm" class="row g-3" (submit)="onAddEditToppingTypeFormSubmit()">
+            <div class="form-group col">
+                <input type="text"
+                    class="form-control"
+                    formControlName="id"
+                    placeholder="Id"/>
+            </div>
+            <div class="form-group col">
+                <input type="text"
+                    class="form-control"
+                    formControlName="code"
+                    placeholder="Topping Type Code"/>
+            </div>
+            <div class="form-group col">
+                <input type="text"
+                    class="form-control"
+                    formControlName="description"
+                    placeholder="Description"/>
+            </div>
+            <div class="button-group col">
+                <button type="submit" class="btn btn-success"><i class="bi bi-database-fill-add"></i></button>
+                <div class="vr" style="margin-left: 10px; margin-right: 10px;"></div>
+                <button type="button" class="btn btn-danger" (click)="clearToppingTypeForm()"><i class="bi bi-x-lg"></i></button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <table class="table-striped table-responsive" style="margin-top: 15px;">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let toppingType of toppingTypes; let i = index;">
+                    <td style="vertical-align: middle;">{{toppingType.id}}</td>
+                    <td style="vertical-align: middle;">{{toppingType.code}}</td>
+                    <td style="vertical-align: middle;">{{toppingType.description}}</td>
+                    <td style="vertical-align: middle;">
+                        <div class="button-group">
+                            <button type="button" class="btn btn-success" (click)="updateToppingType(i)"><i class="bi bi-arrow-clockwise"></i></button>
+                            <div class="vr" style="margin-left: 10px; margin-right: 10px;"></div>
+                            <button type="button" class="btn btn-danger" (click)="deleteToppingType(i)"><i class="bi bi-x-lg"></i></button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 <ng-template #showLoading>
