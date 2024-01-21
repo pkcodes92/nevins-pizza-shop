@@ -1,6 +1,6 @@
 export interface UpdateToppingRequest {
     id: number;
-    code: string;
+    name: string;
     description: string;
     appName: string;
 }

@@ -6,19 +6,23 @@ import {
   AddCrustRequest, 
   AddPizzaSauceRequest, 
   AddPizzaSizeRequest, 
+  AddToppingRequest, 
   UpdateCheeseRequest, 
   UpdateCrustRequest, 
-  UpdatePizzaSauceRequest } from '../models/request';
+  UpdatePizzaSauceRequest, 
+  UpdateToppingRequest} from '../models/request';
 import { Observable } from 'rxjs';
 import { 
   AddCheeseResponse,
   AddCrustResponse, 
   AddPizzaSauceResponse, 
   AddPizzaSizeResponse, 
+  AddToppingResponse, 
   DeleteCheeseResponse, 
   DeleteCrustResponse, 
   DeletePizzaSauceResponse, 
   DeletePizzaSizeResponse, 
+  DeleteToppingResponse, 
   GetCheesesResponse, 
   GetCrustsResponse, 
   GetPizzaSauceResponse, 
@@ -29,7 +33,8 @@ import {
   UpdateCheeseResponse, 
   UpdateCrustResponse, 
   UpdatePizzaSauceResponse, 
-  UpdatePizzaSizeResponse
+  UpdatePizzaSizeResponse,
+  UpdateToppingResponse
 } from '../models/response';
 
 @Injectable({
@@ -59,6 +64,11 @@ export class ApiService {
   addSize(addSizeRequest: AddPizzaSizeRequest) : Observable<AddPizzaSizeResponse> {
     const reqHeaders = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.post<AddPizzaSizeResponse>(this.apiUrl + '/PizzaSize/AddNewSize', JSON.stringify(addSizeRequest), { headers: reqHeaders });
+  }
+
+  addTopping(addToppingRequest: AddToppingRequest): Observable<AddToppingResponse> {
+    const reqHeaders = new HttpHeaders({ 'Content-Type': 'application/json'});
+    return this.http.post<AddToppingResponse>(this.apiUrl + '/Topping/AddTopping', JSON.stringify(addToppingRequest), { headers: reqHeaders });
   }
   // #endregion
 
@@ -112,6 +122,11 @@ export class ApiService {
     const reqHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.put<UpdateCheeseResponse>(this.apiUrl + '/Cheese/UpdateCheese', JSON.stringify(updateRequest), { headers: reqHeaders});
   }
+
+  updateTopping(updateRequest: UpdateToppingRequest): Observable<UpdateToppingResponse> {
+    const reqHeaders = new HttpHeaders({ 'Content-Type': 'application/json'});
+    return this.http.put<UpdateToppingResponse>(this.apiUrl + '/Topping/UpdateTopping', JSON.stringify(updateRequest), { headers: reqHeaders });
+  }
   // #endregion
 
   // #region Deleting entities
@@ -129,6 +144,10 @@ export class ApiService {
 
   deleteCheese(id: number): Observable<DeleteCheeseResponse> {
     return this.http.delete<DeleteCheeseResponse>(this.apiUrl + `/Cheese/DeleteCheese?id=${id}`);
+  }
+
+  deleteTopping(id: number): Observable<DeleteToppingResponse> {
+    return this.http.delete<DeleteToppingResponse>(this.apiUrl + `/Topping/DeleteTopping?id=${id}`);
   }
   // #endregion
 }

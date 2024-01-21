@@ -105,8 +105,13 @@ export class CheeseComponent implements OnInit, OnDestroy {
   deleteCheese(i: number) {
     const cheeseToDelete = this.cheeses[i];
 
-    this.toastrService.warning(`Are you sure you want the remove the cheese with the code: ${cheeseToDelete.code}? Click on this notification to delete. Otherwise, do nothing.`, 'Remove Cheese')
-      .onTap.pipe(take(1)).subscribe(() => this.removeCheese(cheeseToDelete));
+    this.toastrService.warning(`Are you sure you want to remove the cheese with the code: ${cheeseToDelete.code}? Click on this notification to delete. Otherwise, do nothing.`,
+      'Remove Cheese')
+      .onTap
+      .pipe(take(1))
+      .subscribe(
+        () => this.removeCheese(cheeseToDelete)
+      );
   }
 
   updateCheese(i: number) {
@@ -157,13 +162,14 @@ export class CheeseComponent implements OnInit, OnDestroy {
 
         this.updateCheeseSubscription = this.apiService.updateCheese(updateRequest).subscribe({
           next: (response) => {
-            this.loading = false;
             if (response.statusCode === 200) {
               this.toastrService.success(`Successfully updated the cheese with the code: ${updateRequest.code}`, response.statusCode.toString());
               location.reload();
             } else {
               this.toastrService.warning(`There was an error updating the cheese with the code: ${updateRequest.code}`, response.statusCode.toString());
             }
+            
+            this.loading = false;
           },
           error: (error) => {
             this.toastrService.error(`Error occurred while updating the cheese with code: ${updateRequest.code}`, error.status.toString());
