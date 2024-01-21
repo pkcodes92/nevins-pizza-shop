@@ -129,7 +129,9 @@ export class ToppingComponent implements OnInit, OnDestroy {
   }
 
   deleteTopping(i: number) {
-    console.log(`Deleting the topping located: ${i}`);
+    const toppingToDelete = this.toppings[i];
+
+    console.log(`Removing the topping with the name: ${toppingToDelete.name}`);
   }
 
   updateTopping(i: number) {
