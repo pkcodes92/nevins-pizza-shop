@@ -18,7 +18,7 @@ export class ToppingComponent implements OnInit, OnDestroy {
   toppingTypes!: ToppingType[];
   addEditToppingForm!: FormGroup;
 
-  // #region Subscription
+  // #region Subscriptions
   addToppingSubscription!: Subscription;
   deleteToppingSubscription!: Subscription;
   getToppingsSubscription!: Subscription;
