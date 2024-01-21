@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { ToppingType } from 'src/app/models/dto';
+import { AddToppingTypeRequest, UpdateToppingTypeRequest } from 'src/app/models/request';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -65,6 +66,15 @@ export class ToppingTypeComponent implements OnInit, OnDestroy {
     });
   }
 
+  private determineEditMode(request: AddToppingTypeRequest) {
+    const toppingType = this.toppingTypes.find(g => g.code == request.code);
+    if (toppingType !== undefined) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   private getToppingTypes() {
     this.loading = true;
 
@@ -94,7 +104,59 @@ export class ToppingTypeComponent implements OnInit, OnDestroy {
   }
 
   onAddEditToppingTypeFormSubmit() {
-    console.log('to be implemented');
+    this.loading = true;
+
+    if (this.addEditToppingTypeForm != null) {
+      this.editMode = this.determineEditMode(this.addEditToppingTypeForm.value);
+
+      if (!this.editMode) {
+        const addRequest = this.addEditToppingTypeForm.value as AddToppingTypeRequest;
+
+        addRequest.appName = 'Nevins Pizza App';
+
+        this.addEditToppingTypeForm.controls['id'].disable();
+
+        this.addToppingTypeSubscription = this.apiService.addToppingType(addRequest).subscribe({
+          next: (response) => {
+            if (response.statusCode === 201) {
+              this.toastrService.success(`Successfully added the topping type: ${addRequest.code}`, response.statusCode.toString());
+              location.reload();
+            } else {
+              this.toastrService.warning(`Successfully created the new topping type: ${addRequest.code}`, response.statusCode.toString());
+            }
+
+            this.loading = false;
+          },
+          error: (error) => {
+            this.toastrService.error(`Error occurred when adding the topping type: ${addRequest.code}`, error.status.toString());
+            this.loading = false;
+          }
+        });
+      } else {
+        const updateRequest = this.addEditToppingTypeForm.value as UpdateToppingTypeRequest;
+
+        updateRequest.appName = "Nevins Pizza Shop";
+
+        this.addEditToppingTypeForm.controls['id'].disable();
+
+        this.updateToppingTypeSubscription = this.apiService.updateToppingType(updateRequest).subscribe({
+          next: (response) => {
+            if (response.statusCode === 200) {
+              this.toastrService.success(`Successfully updated the topping type: ${updateRequest.code}`, response.statusCode.toString());
+              location.reload();
+            } else {
+              this.toastrService.warning(`There was an error updating the topping type: ${updateRequest.code}`, response.statusCode.toString());
+            }
+
+            this.loading = false;
+          },
+          error: (error) => {
+            this.toastrService.error(`Error occurred while updating the topping type: ${updateRequest.code}`, error.status.toString());
+            this.loading = false;
+          }
+        });
+      }
+    }
   }
 
   deleteToppingType(i: number) {
@@ -102,6 +164,12 @@ export class ToppingTypeComponent implements OnInit, OnDestroy {
   }
 
   updateToppingType(i: number) {
-    console.log(`Updating the topping type located at index: ${i}`);
+    const toppingTypeToUpdate = this.toppingTypes[i];
+
+    this.addEditToppingTypeForm.setValue({
+      id: toppingTypeToUpdate.id,
+      code: toppingTypeToUpdate.code,
+      description: toppingTypeToUpdate.description
+    });
   }
 }

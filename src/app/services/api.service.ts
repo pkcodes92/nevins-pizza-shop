@@ -7,10 +7,12 @@ import {
   AddPizzaSauceRequest, 
   AddPizzaSizeRequest, 
   AddToppingRequest, 
+  AddToppingTypeRequest, 
   UpdateCheeseRequest, 
   UpdateCrustRequest, 
   UpdatePizzaSauceRequest, 
-  UpdateToppingRequest} from '../models/request';
+  UpdateToppingRequest,
+  UpdateToppingTypeRequest} from '../models/request';
 import { Observable } from 'rxjs';
 import { 
   AddCheeseResponse,
@@ -34,8 +36,10 @@ import {
   UpdateCrustResponse, 
   UpdatePizzaSauceResponse, 
   UpdatePizzaSizeResponse,
-  UpdateToppingResponse
+  UpdateToppingResponse,
+  UpdateToppingTypeResponse
 } from '../models/response';
+import { AddToppingTypeResponse } from '../models/response/add-topping-type-response';
 
 @Injectable({
   providedIn: 'root'
@@ -69,6 +73,11 @@ export class ApiService {
   addTopping(addToppingRequest: AddToppingRequest): Observable<AddToppingResponse> {
     const reqHeaders = new HttpHeaders({ 'Content-Type': 'application/json'});
     return this.http.post<AddToppingResponse>(this.apiUrl + '/Topping/AddTopping', JSON.stringify(addToppingRequest), { headers: reqHeaders });
+  }
+
+  addToppingType(addToppingTypeRequest: AddToppingTypeRequest): Observable<AddToppingTypeResponse> {
+    const reqHeaders = new HttpHeaders({ 'Content-Type': 'application/json'});
+    return this.http.post<AddToppingTypeResponse>(this.apiUrl + '/ToppingType/AddToppingType', JSON.stringify(addToppingTypeRequest), { headers: reqHeaders});
   }
   // #endregion
 
@@ -126,6 +135,11 @@ export class ApiService {
   updateTopping(updateRequest: UpdateToppingRequest): Observable<UpdateToppingResponse> {
     const reqHeaders = new HttpHeaders({ 'Content-Type': 'application/json'});
     return this.http.put<UpdateToppingResponse>(this.apiUrl + '/Topping/UpdateTopping', JSON.stringify(updateRequest), { headers: reqHeaders });
+  }
+
+  updateToppingType(updateRequest: UpdateToppingTypeRequest): Observable<UpdateToppingTypeResponse> {
+    const reqHeaders = new HttpHeaders({ 'Content-Type': 'application/json'});
+    return this.http.put<UpdateToppingTypeResponse>(this.apiUrl + '/Topping/UpdateToppingType', JSON.stringify(updateRequest), { headers: reqHeaders});
   }
   // #endregion
 
