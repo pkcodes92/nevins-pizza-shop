@@ -84,4 +84,24 @@ export class ToppingTypeComponent implements OnInit, OnDestroy {
       }
     });
   }
+
+  clearToppingTypeForm() {
+    this.addEditToppingTypeForm.setValue({
+      id: '',
+      code: '',
+      description: ''
+    });
+  }
+
+  onAddEditToppingTypeFormSubmit() {
+    console.log('to be implemented');
+  }
+
+  deleteToppingType(i: number) {
+    console.log(`Deleting the topping type located at index: ${i}`);
+  }
+
+  updateToppingType(i: number) {
+    console.log(`Updating the topping type located at index: ${i}`);
+  }
 }
