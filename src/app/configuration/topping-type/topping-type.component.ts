@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { Subscription } from 'rxjs';
+import { Subscription, take } from 'rxjs';
 import { ToppingType } from 'src/app/models/dto';
 import { AddToppingTypeRequest, UpdateToppingTypeRequest } from 'src/app/models/request';
 import { ApiService } from 'src/app/services/api.service';
@@ -160,7 +160,19 @@ export class ToppingTypeComponent implements OnInit, OnDestroy {
   }
 
   deleteToppingType(i: number) {
-    console.log(`Deleting the topping type located at index: ${i}`);
+    const toppingTypeToDelete = this.toppingTypes[i];
+
+    this.toastrService.warning(`Are you sure you want to remove the topping type: ${toppingTypeToDelete.code}? Click on this popup to delete. Otherwise, do not do anything.`,
+      'Remove Topping Type')
+      .onTap
+      .pipe(take(1))
+      .subscribe(
+        () => this.removeToppingType(toppingTypeToDelete)
+      );
+  }
+
+  removeToppingType(toppingTypeToDelete: ToppingType) {
+    console.log(`Removing: ${toppingTypeToDelete.code} from the database`);
   }
 
   updateToppingType(i: number) {
