@@ -25,6 +25,7 @@ import {
   DeletePizzaSauceResponse, 
   DeletePizzaSizeResponse, 
   DeleteToppingResponse, 
+  DeleteToppingTypeResponse, 
   GetCheesesResponse, 
   GetCrustsResponse, 
   GetPizzaSauceResponse, 
@@ -162,6 +163,10 @@ export class ApiService {
 
   deleteTopping(id: number): Observable<DeleteToppingResponse> {
     return this.http.delete<DeleteToppingResponse>(this.apiUrl + `/Topping/DeleteTopping?id=${id}`);
+  }
+
+  deleteToppingType(id: number): Observable<DeleteToppingTypeResponse> {
+    return this.http.delete<DeleteToppingTypeResponse>(this.apiUrl + `/ToppingType/DeleteToppingType?id=${id}`);
   }
   // #endregion
 }

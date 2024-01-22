@@ -172,7 +172,20 @@ export class ToppingTypeComponent implements OnInit, OnDestroy {
   }
 
   removeToppingType(toppingTypeToDelete: ToppingType) {
-    console.log(`Removing: ${toppingTypeToDelete.code} from the database`);
+    this.loading = true;
+
+    this.deleteToppingTypeSubscription = this.apiService.deleteToppingType(toppingTypeToDelete.id).subscribe({
+      next: (response) => {
+        if (response.statusCode === 204) {
+          this.toastrService.success(`Successfully deleted the topping type: ${toppingTypeToDelete.code}`, response.statusCode.toString());
+          location.reload();
+        }
+      },
+      error: (error) => {
+        this.toastrService.error(`Error occurred while trying to delete the topping type: ${toppingTypeToDelete.code}`, error.status.toString());
+        this.loading = false;
+      }
+    })
   }
 
   updateToppingType(i: number) {
