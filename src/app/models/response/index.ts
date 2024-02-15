@@ -50,3 +50,11 @@ export { UpdateToppingResponse } from './update-topping-response';
 export { UpdateUserResponse } from './update-user-response';
 export { UpdateUserTypeResponse } from './update-user-type-response';
 export { UpdateCheeseResponse } from './update-cheese-response';
+
+export { DeletePizzaSauceResponse } from './delete-pizza-sauce-response';
+export { DeleteCheeseResponse } from './delete-cheese-response';
+export { DeletePizzaSizeResponse } from './delete-pizza-size-response';
+export { DeleteOrderResponse } from './delete-order-response';
+export { DeleteToppingTypeResponse } from './delete-topping-type-response';
+export { DeleteCrustResponse } from './delete-crust-response';
+export { DeleteToppingResponse } from './delete-topping-response';

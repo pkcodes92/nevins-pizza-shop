@@ -1,6 +1,14 @@
 {
-    "workbench.colorCustomizations": {
-    },
-    "editor.fontFamily": "Hack",
+    "workbench.editor.decorations.colors": true,
+    "workbench.editor.labelFormat": "medium",
+    "workbench.editor.decorations.badges": true,
+    "workbench.editor.highlightModifiedTabs": true,
+    "editor.tabCompletion": "on",
+    "editor.autoClosingBrackets": "always",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontSize": 13,
+    "editor.lineHeight": 22,
+    "editor.fontWeight": "300",
     "editor.fontLigatures": true
 }
