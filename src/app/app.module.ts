@@ -10,13 +10,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { ConfigurationModule } from './configuration/configuration.module';
 import { ApiService } from './services/api.service';
 import { ToastrModule } from 'ngx-toastr';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    OrderComponent
+    OrderComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
