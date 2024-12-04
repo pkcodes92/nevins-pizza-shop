@@ -7,9 +7,10 @@ import { AddPizzaSizeRequest, UpdatePizzaSizeRequest } from 'src/app/models/requ
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
-  selector: 'app-pizza-size',
-  templateUrl: './pizza-size.component.html',
-  styleUrl: './pizza-size.component.scss'
+    selector: 'app-pizza-size',
+    templateUrl: './pizza-size.component.html',
+    styleUrl: './pizza-size.component.scss',
+    standalone: false
 })
 export class PizzaSizeComponent implements OnInit, OnDestroy {
   loading!: boolean;

@@ -7,9 +7,10 @@ import { AddCrustRequest, UpdateCrustRequest } from 'src/app/models/request';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
-  selector: 'app-crust',
-  templateUrl: './crust.component.html',
-  styleUrl: './crust.component.scss'
+    selector: 'app-crust',
+    templateUrl: './crust.component.html',
+    styleUrl: './crust.component.scss',
+    standalone: false
 })
 export class CrustComponent implements OnInit, OnDestroy {
   loading!: boolean;

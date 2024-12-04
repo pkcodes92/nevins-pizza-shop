@@ -7,9 +7,10 @@ import { AddCheeseRequest, UpdateCheeseRequest } from 'src/app/models/request';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
-  selector: 'app-cheese',
-  templateUrl: './cheese.component.html',
-  styleUrl: './cheese.component.scss',
+    selector: 'app-cheese',
+    templateUrl: './cheese.component.html',
+    styleUrl: './cheese.component.scss',
+    standalone: false
 })
 export class CheeseComponent implements OnInit, OnDestroy {
   loading!: boolean;

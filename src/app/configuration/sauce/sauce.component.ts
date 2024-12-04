@@ -10,9 +10,10 @@ import {
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
-  selector: 'app-sauce',
-  templateUrl: './sauce.component.html',
-  styleUrl: './sauce.component.scss',
+    selector: 'app-sauce',
+    templateUrl: './sauce.component.html',
+    styleUrl: './sauce.component.scss',
+    standalone: false
 })
 export class SauceComponent implements OnInit, OnDestroy {
   loading: boolean = false;

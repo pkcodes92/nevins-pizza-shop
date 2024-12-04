@@ -7,9 +7,10 @@ import { AddToppingTypeRequest, UpdateToppingTypeRequest } from 'src/app/models/
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
-  selector: 'app-topping-type',
-  templateUrl: './topping-type.component.html',
-  styleUrl: './topping-type.component.scss'
+    selector: 'app-topping-type',
+    templateUrl: './topping-type.component.html',
+    styleUrl: './topping-type.component.scss',
+    standalone: false
 })
 export class ToppingTypeComponent implements OnInit, OnDestroy {
   loading: boolean = false;
